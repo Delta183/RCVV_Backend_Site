@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 // The schema resembles a class in its attributes and objects
 const articleSchema = mongoose.Schema({
     title: String,
-    message: String,
+    content: String,
     creator: String,
     selectedFile: String,
     createdAt: {

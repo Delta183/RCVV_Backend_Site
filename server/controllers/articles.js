@@ -7,15 +7,30 @@ import articleMessage from '../models/articleMessage.js';
 const router = express.Router();
 
 // Asynchronous function such that they can return a promise
-export const getArticles = async (req, res) => { 
+export const getArticles = async (request, result) => { 
     try {
         const articleMessages = await articleMessage.find();
         // HTTP status codes for success and error respectively
-        res.status(200).json(articleMessages);
+        result.status(200).json(articleMessages);
     } catch (error) {
-        res.status(404).json({ message: error.message });
+        result.status(404).json({ message: error.message });
     }
-}
+};
+
+// req and res are request and result respectively. 
+export const createArticle = async (request, result) => {
+    const { title, message, selectedFile, content } = request.body;
+
+    const newArticleMessage = new ArticleMessage({ title, message, selectedFile, content })
+
+    try {
+        await newArticleMessage.save();
+
+        result.status(201).json(newArticleMessage );
+    } catch (error) {
+        result.status(409).json({ message: error.message });
+    }
+};
 
 /* export const getPost = async (req, res) => { 
     const { id } = req.params;
