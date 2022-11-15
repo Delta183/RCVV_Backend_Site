@@ -3,14 +3,18 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-// import postRoutes from './routes/posts.js';
+// Be sure to import routers
+import articleRoutes from './routes/articles.js';
 
 const app = express();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
+// Linking the router for the Articles
+app.use('/posts', articleRoutes);
 
+// MongoDB Atlas connection
 const CONNECTION_URL = "mongodb+srv://Delta183:Selene1995@cluster1.uwhyejd.mongodb.net/?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 
