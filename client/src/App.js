@@ -9,18 +9,26 @@ import ArticleComponent from './components/ArticleComponents/ArticleComponent.js
 // This file structure is curious but more current
 const App = () => {
     return (
-        // Wrap the entire app in the Router tags
-        <Router>
-            <div className="App">
-                <Sidebar />
-                {/* Routes below */}
-                <Routes>
-                    <Route exact path="/articles" element={<ArticleComponent />} />
-                    {/* <Route exact path="/about" element={<About />} />
-                    <Route exact path="/contact" element={<Contact />} /> */}
-                </Routes>
+        <div class="page-container">
+            <div class="content-wrap">
+                <div class="row">
+                    <Router>
+                        <div class="col-3">
+                            <Sidebar />
+                            {/* Routes below */}
+                        </div>
+                        <div class="col-9">
+                            <Routes>
+                                <Route exact path="/articles" element={<ArticleComponent />} />
+                                {/* <Route exact path="/about" element={<About />} />
+                                <Route exact path="/contact" element={<Contact />} /> */}
+                            </Routes>
+                        </div> 
+                    </Router>
+                </div>
             </div>
-        </Router>
+        </div>
+        
     );
 };
 
