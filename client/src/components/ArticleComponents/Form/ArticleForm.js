@@ -1,50 +1,90 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createArticle } from '../../../actions/articles';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FileBase from 'react-file-base64';
 
 const ArticleForm = () => {
-    
+// constants and functions
+const [articleData, setArticleData] = useState({ creator: '', title: '', content: '', selectedFile: '' });
+const dispatch = useDispatch();
+
+const handleSubmit = () => {
+
+}
+
+const clear = () => {
+  // setCurrentId(0);
+  // setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+};
+// HTML Below
 return (
   <Form>
     {/* First segment of the form (i.e. title, text input, extra text
       mb refers to the level of the 'b' bottom margin. me is for the 'e' end margin  */}
     <Form.Group className="m-3" name="title">
       <Form.Label>Title</Form.Label>
-      <Form.Control type="text" placeholder="Enter a title for the article..." />
-      {/* Extra text for a helpful instruction.
-      <Form.Text className="text-muted">
-        We'll never share your email with anyone else.
-      </Form.Text> */}
+      <Form.Control 
+      type="text" 
+      placeholder="Enter a title for the article..." 
+      value={articleData.title} 
+      // This is a setter method, the ...articleData in this case is necessary to ensure subsequent textfields don't override title
+      onChange={(e) => setArticleData({...articleData, title: e.target.value})}/>
     </Form.Group>
 
     {/* Second Segment */}
     <Form.Group className="m-3" name="creator">
       <Form.Label>Creator</Form.Label>
-      <Form.Control type="text" placeholder="Enter the name of the creator..." />
+      <Form.Control 
+      type="text" 
+      placeholder="Enter the name of the creator..." 
+      value={articleData.creator}
+      onChange={(e) => setArticleData({...articleData, creator: e.target.value})}
+      />
     </Form.Group>
 
     {/* Third Segment */}
     <Form.Group className="m-3" name="content">
       <Form.Label>Content</Form.Label>
-      <Form.Control as="textarea" rows={10} type="text" placeholder="Enter the content for the article..." />
+      <Form.Control as="textarea" rows={10} 
+      type="text" 
+      placeholder="Enter the content for the article..." 
+      value={articleData.content}
+      onChange={(e) => setArticleData({...articleData, content: e.target.value})}
+      />
     </Form.Group>
-    {/* Checkbox functionality.
-    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-      <Form.Check type="checkbox" label="Check me out" />
-    </Form.Group> */}
+   
 
     {/* Fourth Segment */}
     <Form.Group className="m-3" name="selectedFile">
       <Form.Label>Image</Form.Label>
       <div>
-        <FileBase type="file" multiple={false}/>
+        <FileBase 
+        type="file" 
+        multiple={false}
+        onDone={({ base64 }) => setArticleData({ ...articleData, selectedFile: base64 })}
+        />
       </div>
     </Form.Group>
 
-    {/* Submit button to end all information */}
+    {
+    /* Extra text for a helpful instruction.
+      <Form.Text className="text-muted">
+        We'll never share your email with anyone else.
+      </Form.Text> */
+
+    /* Checkbox functionality.
+    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+      <Form.Check type="checkbox" label="Check me out" />
+    </Form.Group> */}
+
+    {/* Submit and clear button to end all information */}
     <Button className="m-3" variant="primary" type="submit">
       Submit
+    </Button>
+    <Button variant="primary" onClick={clear}>
+      Clear
     </Button>
   </Form>
   )

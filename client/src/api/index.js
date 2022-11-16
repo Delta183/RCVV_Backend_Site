@@ -4,7 +4,7 @@ import axios from 'axios';
 const url = 'http://localhost:5000/articles';
 
 export const fetchArticles = () => axios.get(url);
-// export const createArticle = (newPost) => axios.post(url, newPost);
-// export const likeArticle = (id) => axios.patch(`${url}/${id}/likePost`);
+// newArticle in this case is simply a parameter
+export const createArticle = (newArticle) => axios.post(url, newArticle);
 // export const updateArticle = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
 // export const deleteArticle = (id) => axios.delete(`${url}/${id}`);
