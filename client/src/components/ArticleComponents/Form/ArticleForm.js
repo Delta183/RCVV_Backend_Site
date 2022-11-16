@@ -9,7 +9,7 @@ return (
   <Form>
     {/* First segment of the form (i.e. title, text input, extra text
       mb refers to the level of the 'b' bottom margin. me is for the 'e' end margin  */}
-    <Form.Group className="m-3" controlId="formBasicEmail">
+    <Form.Group className="m-3" name="title">
       <Form.Label>Title</Form.Label>
       <Form.Control type="text" placeholder="Enter a title for the article..." />
       {/* Extra text for a helpful instruction.
@@ -19,13 +19,13 @@ return (
     </Form.Group>
 
     {/* Second Segment */}
-    <Form.Group className="m-3" controlId="formBasicPassword">
+    <Form.Group className="m-3" name="creator">
       <Form.Label>Creator</Form.Label>
       <Form.Control type="text" placeholder="Enter the name of the creator..." />
     </Form.Group>
 
     {/* Third Segment */}
-    <Form.Group className="m-3" controlId="formBasicPassword">
+    <Form.Group className="m-3" name="content">
       <Form.Label>Content</Form.Label>
       <Form.Control as="textarea" rows={10} type="text" placeholder="Enter the content for the article..." />
     </Form.Group>
@@ -35,7 +35,7 @@ return (
     </Form.Group> */}
 
     {/* Fourth Segment */}
-    <Form.Group className="m-3" controlId="formBasicPassword">
+    <Form.Group className="m-3" name="selectedFile">
       <Form.Label>Image</Form.Label>
       <div>
         <FileBase type="file" multiple={false}/>

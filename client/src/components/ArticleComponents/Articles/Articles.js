@@ -5,7 +5,8 @@ const Articles = () => {
     return (
         <div>
             <h1>ARTICLES</h1>
-            <Article/>
+             <Article/> 
+
         </div>
         
     );
