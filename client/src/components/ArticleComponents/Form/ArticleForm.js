@@ -6,12 +6,15 @@ import Form from 'react-bootstrap/Form';
 import FileBase from 'react-file-base64';
 
 const ArticleForm = () => {
-// constants and functions
+// State with setter and getter implicitly with attributes
 const [articleData, setArticleData] = useState({ creator: '', title: '', content: '', selectedFile: '' });
 const dispatch = useDispatch();
 
-const handleSubmit = () => {
-
+const handleSubmit = (e) => {
+  e.preventDefault();
+  
+  // Dispatching the action of createArticle upon submit
+  dispatch(createArticle(articleData));
 }
 
 const clear = () => {
@@ -20,7 +23,7 @@ const clear = () => {
 };
 // HTML Below
 return (
-  <Form>
+  <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
     {/* First segment of the form (i.e. title, text input, extra text
       mb refers to the level of the 'b' bottom margin. me is for the 'e' end margin  */}
     <Form.Group className="m-3" name="title">

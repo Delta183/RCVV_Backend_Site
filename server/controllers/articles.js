@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 // The controllers are connected to the models
-import articleMessage from '../models/articleMessage.js';
+import ArticleMessage from '../models/articleMessage.js';
 
 // IMPORTANT - this particular line uses the same router in server/routes/articles.js
 const router = express.Router();
@@ -10,7 +10,7 @@ const router = express.Router();
 // Asynchronous function such that they can return a promise
 export const getArticles = async (request, result) => { 
     try {
-        const articleMessages = await articleMessage.find();
+        const articleMessages = await ArticleMessage.find();
         // HTTP status codes for success and error respectively
         result.status(200).json(articleMessages);
     } catch (error) {
@@ -20,9 +20,9 @@ export const getArticles = async (request, result) => {
 
 // req and res are request and result respectively. 
 export const createArticle = async (request, result) => {
-    const { title, message, selectedFile, content } = request.body;
+    const { title, content, creator, selectedFile} = request.body;
 
-    const newArticleMessage = new ArticleMessage({ title, message, selectedFile, content })
+    const newArticleMessage = new ArticleMessage({ title, content, creator, selectedFile })
 
     try {
         await newArticleMessage.save();

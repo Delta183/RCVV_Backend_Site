@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
+import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
 
 // The actions folder is connext to the api folder
 import * as api from '../api/index.js';
@@ -19,6 +19,7 @@ export const createArticle = (article) => async (dispatch) => {
 
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
+    console.log("kono baka");
     console.log(error.message);
   }
 };
