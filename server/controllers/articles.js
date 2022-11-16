@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
+// The controllers are connected to the models
 import articleMessage from '../models/articleMessage.js';
 
 // IMPORTANT - this particular line uses the same router in server/routes/articles.js

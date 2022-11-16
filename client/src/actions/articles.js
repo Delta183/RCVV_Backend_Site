@@ -1,5 +1,6 @@
 import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
 
+// The actions folder is connext to the api folder
 import * as api from '../api/index.js';
 
 export const getArticles = () => async (dispatch) => {

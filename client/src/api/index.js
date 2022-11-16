@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// This file is connected to src/actions/articles.js
 const url = 'http://localhost:5000/articles';
 
 export const fetchArticles = () => axios.get(url);
