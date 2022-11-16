@@ -1,46 +1,28 @@
 import React from "react";
 import Article from "./Article/Article.js";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 import { useSelector } from 'react-redux';
 
-const Articles = () => {
+const Articles = ({setCurrentId}) => {
     const articles = useSelector((state) => state.articles);
     console.log(articles);
     return (
-        <div>
-            <h1>ARTICLES</h1>
-             <Article/> 
-
-        </div>
-        
+      // Ternary statement: Spinner if empty, articles if not
+      !articles.length ? <Spinner animation="border" /> : (
+        <Container>
+          <Row>
+            {articles.map((article) => (
+              <Col key={article._id} item xs={12} sm={6} md={6}>
+                <Article article={article} setCurrentId={setCurrentId} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      )
     );
 }
 
 export default Articles;
-
-/*
-import React from 'react';
-import { Grid, CircularProgress } from '@material-ui/core';
-import { useSelector } from 'react-redux';
-
-import Post from './Post/Post';
-import useStyles from './styles';
-
-const Posts = ({ setCurrentId }) => {
-  const posts = useSelector((state) => state.posts);
-  const classes = useStyles();
-
-  return (
-    !posts.length ? <CircularProgress /> : (
-      <Grid className={classes.container} container alignItems="stretch" spacing={3}>
-        {posts.map((post) => (
-          <Grid key={post._id} item xs={12} sm={6} md={6}>
-            <Post post={post} setCurrentId={setCurrentId} />
-          </Grid>
-        ))}
-      </Grid>
-    )
-  );
-};
-
-export default Posts;
-*/

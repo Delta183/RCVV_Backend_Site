@@ -4,9 +4,7 @@ import { getArticles, createArticle } from '../controllers/articles.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    // res.send('This works.')
-});
+router.get('/', getArticles);
 router.post('/', createArticle);
 
 export default router;  

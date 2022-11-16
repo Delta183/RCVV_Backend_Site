@@ -19,7 +19,6 @@ export const createArticle = (article) => async (dispatch) => {
 
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
-    console.log("kono baka");
     console.log(error.message);
   }
 };
