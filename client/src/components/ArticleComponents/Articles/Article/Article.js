@@ -17,11 +17,11 @@ const Article = ({ article, setCurrentId }) => {
                 <Card.Subtitle>{article.creator}</Card.Subtitle>
                 <Card.Text>{article.content}</Card.Text>
                 <Card.Text>{moment(article.createdAt).fromNow()}</Card.Text>
-                <Button className="me-2" variant="primary">Edit</Button>
+                <Button className="me-2" variant="primary" onClick={() => setCurrentId(article._id)}>Edit</Button>
                 <Button variant="danger">Delete</Button>
             </Card.Body>
         </Card> 
     );
-}
+};
 
 export default Article;

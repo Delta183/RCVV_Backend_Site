@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 const Articles = ({setCurrentId}) => {
     const articles = useSelector((state) => state.articles);
     console.log(articles);
+    
     return (
       // Ternary statement: Spinner if empty, articles if not
       !articles.length ? <Spinner animation="border" /> : (
