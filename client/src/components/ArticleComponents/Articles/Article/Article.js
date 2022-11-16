@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
+import { deleteArticle } from "../../../../actions/articles";
 
 const Article = ({ article, setCurrentId }) => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Article = ({ article, setCurrentId }) => {
                 <Card.Text>{article.content}</Card.Text>
                 <Card.Text>{moment(article.createdAt).fromNow()}</Card.Text>
                 <Button className="me-2" variant="primary" onClick={() => setCurrentId(article._id)}>Edit</Button>
-                <Button variant="danger">Delete</Button>
+                <Button variant="danger" onClick={() => dispatch(deleteArticle(article._id))}>Delete</Button>
             </Card.Body>
         </Card> 
     );
