@@ -12,7 +12,7 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 // Linking the router for the Articles
-app.use('/posts', articleRoutes);
+app.use('/articles', articleRoutes);
 
 // MongoDB Atlas connection
 const CONNECTION_URL = "mongodb+srv://Delta183:Selene1995@cluster1.uwhyejd.mongodb.net/?retryWrites=true&w=majority";

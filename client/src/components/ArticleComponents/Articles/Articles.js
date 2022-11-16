@@ -1,7 +1,10 @@
 import React from "react";
 import Article from "./Article/Article.js";
+import { useSelector } from 'react-redux';
 
 const Articles = () => {
+    const articles = useSelector((state) => state.articles);
+    console.log(articles);
     return (
         <div>
             <h1>ARTICLES</h1>
