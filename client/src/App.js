@@ -12,6 +12,7 @@ const App = () => {
         <div class="page-container">
             <div class="content-wrap">
                 <div class="row">
+                    {/* If possible, change it so they dynamically go from 3,9 to 2,10/1,11 */}
                     <Router>
                         <div class="col-3">
                             <Sidebar />

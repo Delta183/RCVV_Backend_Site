@@ -1,10 +1,13 @@
 import React from 'react';
+import ArticleForm from './Form/ArticleForm';
+
 const ArticleComponent = () => {
     
 return (
       <div>
         <h1 style={{color:"green"}}> 
-            Welcome to GeeksForGeeks</h1>
+            Article Component</h1>
+        <ArticleForm/>
       </div>
   )
 };
