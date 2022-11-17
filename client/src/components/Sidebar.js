@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'react-bootstrap/Image';
 import {
   CDBSidebar,
   CDBSidebarContent,
@@ -12,7 +13,8 @@ import jinx from '../images/jinx.jpeg'
 
 const Sidebar = () => {
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
+    // sticky-top from the bootstrap-react allows it to stay on that area on the screen
+    <div className='sticky-top' style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         {/* Header - comes with a sandwich button that opens and closes it appears */}
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
@@ -24,11 +26,13 @@ const Sidebar = () => {
         {/* Entries for the sidebar */}
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
+            {/* Trying to figure out how to get a custom icon here */}
             <CDBSidebarMenuItem>
               {/* Use React-Bootstrap grid system to properly handle rows and columns */}
             <div className="d-flex justify-content-start flex-row mb-3">
               <div className='flex-col'>
-                <img
+                <Image
+                  roundedCircle='true'
                   src={jinx}
                   alt="bigfootjinx"
                   style={{ width: '75px' }}
@@ -64,7 +68,7 @@ const Sidebar = () => {
               padding: '20px 5px',
             }}
           >
-            Sidebar Footer
+            @RCVV
           </div>
         </CDBSidebarFooter>
       </CDBSidebar>
