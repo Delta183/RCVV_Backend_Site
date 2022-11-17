@@ -32,12 +32,14 @@ const handleSubmit = (e) => {
 
 const clear = () => {
   setCurrentId(0);
+  // Be sure to set the attributes as none once more
   setArticleData({ title: '', creator: '', content: '', selectedFile: '' });
 };
 
 // HTML Below
 return (
   <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+    <h2>{currentId ? `Editing "${article.title}"` : 'Creating an Article'}</h2>
     {/* First segment of the form (i.e. title, text input, extra text
       mb refers to the level of the 'b' bottom margin. me is for the 'e' end margin  */}
     <Form.Group className="m-3" name="title">

@@ -17,8 +17,11 @@ const Article = ({ article, setCurrentId }) => {
                 <Card.Title>{article.title}</Card.Title>
                 <Card.Subtitle>{article.creator}</Card.Subtitle>
                 <Card.Text>{article.content}</Card.Text>
+                {/* Moment is used to track the time, a library for time */}
                 <Card.Text>{moment(article.createdAt).fromNow()}</Card.Text>
+                {/* By setting the currentId here, the props go back up and trigger the updateFunction */}
                 <Button className="me-2" variant="primary" onClick={() => setCurrentId(article._id)}>Edit</Button>
+                {/* dispatch the action to deleteArticle */}
                 <Button variant="danger" onClick={() => dispatch(deleteArticle(article._id))}>Delete</Button>
             </Card.Body>
         </Card> 
