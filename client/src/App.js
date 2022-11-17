@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useEffect} from "react";
 // Uses hooks, importing a hook. This will alow us to dispatch an action
 import { useDispatch } from 'react-redux';
 import { getArticles } from './actions/articles.js';
@@ -11,7 +11,7 @@ import HomeComponent from "./components/HomeComponent.js";
 
 // This file structure is curious but more current
 const App = () => {
-    const[isClosed, setIsClosed] = useState(false);
+   
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,33 +20,24 @@ const App = () => {
 
     // console.log(isClosed);
     return (
-        <div className="page-container">
-            <div className="content-wrap">
-                <div className="row">
+        <div class="page-container">
+            <div class="content-wrap">
+                <div class="row">
                     {/* If possible, change it so they dynamically go from 3,9 to 2,10/1,11 */}
                     <Router>
-                        {!isClosed ? 
-                        <div className="col-3"><Sidebar isClosed={isClosed} setIsClosed={setIsClosed} /></div> : 
-                        <div className="col-1"><Sidebar isClosed={isClosed} setIsClosed={setIsClosed} /></div>}
-
-                        {!isClosed ?     
-                         
-                        <div className="col-9">
-                            
+                        <div class="col-3">
+                            <Sidebar />
+                            {/* Routes below */}
+                        </div>
+                        <div class="col-9">
+                            {/* There exists a 404 error here because we lack a default page */}
                             <Routes>
                                 <Route exact path="/" element={<HomeComponent />} />
                                 <Route exact path="/articles" element={<ArticleComponent />} />
+                                {/* <Route exact path="/about" element={<About />} />
+                                <Route exact path="/contact" element={<Contact />} /> */}
                             </Routes>
-                        </div> :
-                        
-                         <div className="col-11">
-                          
-                            <Routes>
-                                <Route exact path="/" element={<HomeComponent />} />
-                                <Route exact path="/articles" element={<ArticleComponent />} />
-                               
-                            </Routes>
-                        </div>}
+                        </div> 
                     </Router>
                 </div>
             </div>

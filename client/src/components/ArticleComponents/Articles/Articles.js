@@ -16,7 +16,7 @@ const Articles = ({setCurrentId}) => {
         <Container>
           <Row>
             {articles.map((article) => (
-              <Col key={article._id} item xs={12} sm={6} md={6}>
+              <Col className="mb-3" key={article._id} item xs={12} sm={6} md={6}>
                 <Article article={article} setCurrentId={setCurrentId} />
               </Col>
             ))}
