@@ -11,13 +11,13 @@ import {
 import { NavLink } from 'react-router-dom';
 import jinx from '../images/jinx.jpeg'
 
-const Sidebar = () => {
+const Sidebar = ({isClosed, setIsClosed}) => {
   return (
     // sticky-top from the bootstrap-react allows it to stay on that area on the screen
     <div className='sticky-top' style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#fff" backgroundColor="#333">
-        {/* Header - comes with a sandwich button that opens and closes it appears */}
-        <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+        {/* Header - comes with a 'prefix' sandwich button that opens and closes it appears */}
+        <CDBSidebarHeader prefix={<i onClick={() => setIsClosed(!isClosed)} className="fa fa-bars fa-large"></i>}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
             RCVV Backend Site
           </a>

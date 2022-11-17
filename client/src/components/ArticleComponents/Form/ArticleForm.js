@@ -6,11 +6,11 @@ import Form from 'react-bootstrap/Form';
 import FileBase from 'react-file-base64';
 
 const ArticleForm = ({ currentId, setCurrentId }) => {
-// State with setter and getter implicitly with attributes
-const [articleData, setArticleData] = useState({ creator: '', title: '', content: '', selectedFile: '' });
-// Runs a check if the selected article matches ids
-const article = useSelector((state) => (currentId ? state.articles.find((p) => p._id === currentId) : null));
-const dispatch = useDispatch();
+  // State with setter and getter implicitly with attributes
+  const [articleData, setArticleData] = useState({ creator: '', title: '', content: '', selectedFile: '' });
+  // Runs a check if the selected article matches ids
+  const article = useSelector((state) => (currentId ? state.articles.find((p) => p._id === currentId) : null));
+  const dispatch = useDispatch();
 
 // Populate values of the form
 useEffect(() => {
