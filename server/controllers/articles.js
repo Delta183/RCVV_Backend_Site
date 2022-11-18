@@ -33,40 +33,40 @@ export const createArticle = async (request, result) => {
     }
 };
 
-export const getArticle = async (req, res) => { 
-    const { id } = req.params;
+export const getArticle = async (request, result) => { 
+    const { id } = request.params;
 
     try {
         const article = await ArticleMessage.findById(id);
         
-        res.status(200).json(article);
+        result.status(200).json(article);
     } catch (error) {
-        res.status(404).json({ message: error.message });
+        result.status(404).json({ message: error.message });
     }
 }
 
-export const updateArticle = async (req, res) => {
-    const { id } = req.params;
-    const { title, creator, content, selectedFile } = req.body;
+export const updateArticle = async (request, result) => {
+    const { id } = request.params;
+    const { title, creator, content, selectedFile } = request.body;
     
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No article with id: ${id}`);
+    if (!mongoose.Types.ObjectId.isValid(id)) return result.status(404).send(`No article with id: ${id}`);
 
     const updatedArticle = {title, creator, content, selectedFile, _id: id };
 
     await ArticleMessage.findByIdAndUpdate(id, updatedArticle, { new: true });
 
-    res.json(updatedArticle);
+    result.json(updatedArticle);
 }
 
 
-export const deleteArticle = async (req, res) => {
-    const { id } = req.params;
+export const deleteArticle = async (request, result) => {
+    const { id } = request.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No article with id: ${id}`);
+    if (!mongoose.Types.ObjectId.isValid(id)) return result.status(404).send(`No article with id: ${id}`);
 
     await ArticleMessage.findByIdAndRemove(id);
 
-    res.json({ message: "Article deleted successfully." });
+    result.json({ message: "Article deleted successfully." });
 }
 
 
