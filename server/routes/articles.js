@@ -4,11 +4,11 @@ import { getArticles, createArticle, getArticle, updateArticle, deleteArticle} f
 
 const router = express.Router();
 
+// Request handlers
 router.get('/', getArticles);
 router.post('/', createArticle);
 router.get('/:id', getArticle);
 router.patch('/:id', updateArticle);
 router.delete('/:id', deleteArticle);
-
 
 export default router;  

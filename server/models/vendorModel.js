@@ -5,6 +5,8 @@ const vendorSchema = mongoose.Schema({
     name: String,
     price: String,
     description: String,
+    selectedFile: String,
+    amount: Number,
     isInStock: Boolean,
 })
 
