@@ -20,16 +20,16 @@ const App = () => {
 
     // console.log(isClosed);
     return (
-        <div class="page-container">
-            <div class="content-wrap">
-                <div class="row">
+        <div className="page-container">
+            <div className="content-wrap">
+                <div className="row">
                     {/* If possible, change it so they dynamically go from 3,9 to 2,10/1,11 */}
                     <Router>
-                        <div class="col-3">
+                        <div className="col-3">
                             <Sidebar />
                             {/* Routes below */}
                         </div>
-                        <div class="col-9">
+                        <div className="col-9">
                             {/* There exists a 404 error here because we lack a default page */}
                             <Routes>
                                 <Route exact path="/" element={<HomeComponent />} />

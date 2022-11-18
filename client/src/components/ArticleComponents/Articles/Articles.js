@@ -15,8 +15,9 @@ const Articles = ({setCurrentId}) => {
       !articles.length ? <Spinner animation="border" /> : (
         <Container>
           <Row>
+            {/* With the fetched articles, create an Article component for each of them */}
             {articles.map((article) => (
-              <Col className="mb-3" key={article._id} item xs={12} sm={6} md={6}>
+              <Col className="mb-3" key={article._id} item="true" xs={12} sm={6} md={6}>
                 <Article article={article} setCurrentId={setCurrentId} />
               </Col>
             ))}

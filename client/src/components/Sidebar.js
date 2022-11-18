@@ -18,9 +18,7 @@ const Sidebar = () => {
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         {/* Header - comes with a 'prefix' sandwich button that opens and closes it appears */}
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-          <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
             RCVV Backend Site
-          </a>
         </CDBSidebarHeader>
 
         {/* Entries for the sidebar */}
@@ -42,20 +40,21 @@ const Sidebar = () => {
             </div>
             </CDBSidebarMenuItem>
             {/* IMPORTANT FOR ICONS: The icons are from Font Awesome 5 */}
-            <NavLink exact to="/" activeClassName="activeClicked">
+            <NavLink exact="true" to="/" activeclassname="activeClicked">
               <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/articles" activeClassName="activeClicked">
+            {/* The class to give the element when it is active */}
+            <NavLink exact="true" to="/articles" activeclassname="activeClicked">
               <CDBSidebarMenuItem icon="edit">Articles</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/newsletters" activeClassName="activeClicked">
+            <NavLink exact="true" to="/newsletters" activeclassname="activeClicked">
               <CDBSidebarMenuItem icon="newspaper">Newsletters</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/volunteers" activeClassName="activeClicked">
+            <NavLink exact="true" to="/volunteers" activeclassname="activeClicked">
               <CDBSidebarMenuItem icon="grin">Volunteers</CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/vendor" target="_blank" activeClassName="activeClicked">
+            <NavLink exact="true" to="/vendor" target="_blank" activeclassname="activeClicked">
               <CDBSidebarMenuItem icon="book">Vendor Items</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
@@ -65,7 +64,7 @@ const Sidebar = () => {
         <CDBSidebarFooter style={{ textAlign: 'center' }}>
           <div
             style={{
-              padding: '20px 5px',
+              padding: '20px',
             }}
           >
             @RCVV
