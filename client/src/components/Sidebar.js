@@ -50,7 +50,7 @@ const Sidebar = () => {
             <NavLink exact="true" to="/newsletters" activeclassname="activeClicked">
               <CDBSidebarMenuItem icon="newspaper">Newsletters</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact="true" to="/vendor" target="_blank" activeclassname="activeClicked">
+            <NavLink exact="true" to="/vendor" activeclassname="activeClicked">
               <CDBSidebarMenuItem icon="book">Vendor Items</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>

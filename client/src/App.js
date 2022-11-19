@@ -11,6 +11,7 @@ import Sidebar from "./components/Sidebar.js";
 import ArticleComponent from './components/ArticleComponents/ArticleComponent.js';
 import HomeComponent from "./components/HomeComponent.js";
 import NewsletterComponent from "./components/NewsletterComponents/NewsletterComponent.js";
+import VendorItemComponent from "./components/VendorItemComponents/VendorItemComponent.js";
 
 // This file structure is curious but more current
 const App = () => {
@@ -40,7 +41,7 @@ const App = () => {
                                 <Route exact path="/" element={<HomeComponent />} />
                                 <Route exact path="/articles" element={<ArticleComponent />} />
                                 <Route exact path="/newsletters" element={<NewsletterComponent />} />
-                                {/*  <Route exact path="/vendor" element={<Contact />} /> */}
+                                <Route exact path="/vendor" element={< VendorItemComponent/>} /> 
                             </Routes>
                         </div> 
                     </Router>
