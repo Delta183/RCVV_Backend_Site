@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 // The schema resembles a class in its attributes and objects
 const vendorSchema = mongoose.Schema({
-    name: String,
+    title: String,
     price: String,
     description: String,
     selectedFile: String,

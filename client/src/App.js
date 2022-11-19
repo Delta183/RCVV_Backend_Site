@@ -3,6 +3,7 @@ import React, { useEffect} from "react";
 import { useDispatch } from 'react-redux';
 import { getArticles } from './actions/articles.js';
 import { getNewsletters } from "./actions/newsletters.js";
+import { getItems } from "./actions/vendorItems.js";
 // Router being imported as a means to navigate all the pages
 // Switch is used as it renders a route exclusively whereas Router rerenders the whole page
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
@@ -20,6 +21,7 @@ const App = () => {
     useEffect(() => {
         dispatch(getArticles());
         dispatch(getNewsletters());
+        dispatch(getItems());
       }, [dispatch]);
 
     return (
@@ -38,7 +40,7 @@ const App = () => {
                                 <Route exact path="/" element={<HomeComponent />} />
                                 <Route exact path="/articles" element={<ArticleComponent />} />
                                 <Route exact path="/newsletters" element={<NewsletterComponent />} />
-                                {/*  <Route exact path="/contact" element={<Contact />} /> */}
+                                {/*  <Route exact path="/vendor" element={<Contact />} /> */}
                             </Routes>
                         </div> 
                     </Router>
