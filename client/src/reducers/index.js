@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
 import articles from './articles.js';
+import newsletters from './newsletters.js';
 
-export const reducers = combineReducers({ articles });
+// Put all reducers here
+export const reducers = combineReducers({ articles, newsletters });

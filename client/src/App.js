@@ -2,23 +2,26 @@ import React, { useEffect} from "react";
 // Uses hooks, importing a hook. This will alow us to dispatch an action
 import { useDispatch } from 'react-redux';
 import { getArticles } from './actions/articles.js';
+import { getNewsletters } from "./actions/newsletters.js";
 // Router being imported as a means to navigate all the pages
 // Switch is used as it renders a route exclusively whereas Router rerenders the whole page
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Sidebar from "./components/Sidebar.js";
 import ArticleComponent from './components/ArticleComponents/ArticleComponent.js';
 import HomeComponent from "./components/HomeComponent.js";
+import NewsletterComponent from "./components/NewsletterComponents/NewsletterComponent.js";
 
 // This file structure is curious but more current
 const App = () => {
    
     const dispatch = useDispatch();
 
+    // Add dispatches here presumably
     useEffect(() => {
         dispatch(getArticles());
+        dispatch(getNewsletters());
       }, [dispatch]);
 
-    // console.log(isClosed);
     return (
         <div className="page-container">
             <div className="content-wrap">
@@ -34,8 +37,8 @@ const App = () => {
                             <Routes>
                                 <Route exact path="/" element={<HomeComponent />} />
                                 <Route exact path="/articles" element={<ArticleComponent />} />
-                                {/* <Route exact path="/about" element={<About />} />
-                                <Route exact path="/contact" element={<Contact />} /> */}
+                                <Route exact path="/newsletters" element={<NewsletterComponent />} />
+                                {/*  <Route exact path="/contact" element={<Contact />} /> */}
                             </Routes>
                         </div> 
                     </Router>

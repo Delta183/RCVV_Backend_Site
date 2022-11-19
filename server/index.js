@@ -5,7 +5,7 @@ import cors from 'cors';
 
 // Be sure to import routers
 import articleRoutes from './routes/articles.js';
-
+import newsletterRoutes from './routes/newsletters.js'
 const app = express();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 // Linking the router for the Articles
 app.use('/articles', articleRoutes);
+app.use('/newsletters', newsletterRoutes);
 
 // MongoDB Atlas connection
 const CONNECTION_URL = "mongodb+srv://Delta183:Selene1995@cluster1.uwhyejd.mongodb.net/?retryWrites=true&w=majority";

@@ -7,7 +7,6 @@ const vendorSchema = mongoose.Schema({
     description: String,
     selectedFile: String,
     amount: Number,
-    isInStock: Boolean,
 })
 
 // Presumably this is the encapsulation of the model given a title and scheme which is promptly exported

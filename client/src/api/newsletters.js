@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // This file is connected to src/actions/articles.js
-const url = 'http://localhost:5000/newsletter';
+const url = 'http://localhost:5000/newsletters';
 
 export const fetchNewsletters = () => axios.get(url);
 // newArticle in this case is simply a parameter
