@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
 
-import { GoogleLogin } from '@react-oauth/google';
+// import { GoogleLogin } from '@react-oauth/google';
 import { signin, signup } from '../../actions/auth';
 import { AUTH } from "../../constants/actionTypes";
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
@@ -26,30 +27,30 @@ const LoginComponent = () => {
       };
     
     const handleSubmit = (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    if (isSignup) {
-        dispatch(signup(form, history));
-    } else {
-        dispatch(signin(form, history));
-    }
+        if (isSignup) {
+            dispatch(signup(form, history));
+        } else {
+            dispatch(signin(form, history));
+        }
     };
     
 
-    const googleSuccess = async (res) => {
-    const result = res?.profileObj;
-    const token = res?.tokenId;
+    // const googleSuccess = async (res) => {
+    //     const result = res?.profileObj;
+    //     const token = res?.tokenId;
 
-    try {
-        dispatch({ type: AUTH, data: { result, token } });
+    //     try {
+    //         dispatch({ type: AUTH, data: { result, token } });
 
-        history.push('/');
-    } catch (error) {
-        console.log(error);
-    }
-    };
+    //         history.push('/');
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
-    const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
+    // const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -89,33 +90,41 @@ const LoginComponent = () => {
 
         {/* Third Segment */}
         <Form.Group className="m-3" name="email">
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-        type="email" 
-        placeholder="Enter your email..." 
-        handleChange={handleChange}
-        />
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+            type="email" 
+            placeholder="Enter your email..." 
+            handleChange={handleChange}
+            />
         </Form.Group>
     
-        {/* Fourth Segment */}
-        <Form.Group className="m-3" name="password">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-        type="password" 
-        placeholder="Enter your password..." 
-        handleChange={handleChange}
-        />
+        {/* Fourth Segment: Nested Input Group in Form Group could arise issues*/}
+        <Form.Group className="m-3" name="email">
+            <Form.Label>Password</Form.Label>
+            <InputGroup>
+                
+                <Form.Control
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Enter your password..." 
+                handleChange={handleChange}
+                />
+                <Button onClick={handleShowPassword} variant="outline-secondary" id="button-addon2">
+                    Show Password
+                </Button>
+            </InputGroup>
         </Form.Group>
-
-        {/* Fifth Segment */}
+        {/* only show the confirm password if the user is signing up */}
+        { isSignup && 
         <Form.Group className="m-3" name="confirmPassword">
-        <Form.Label>Confirm Password</Form.Label>
-        <Form.Control
-        type="password" 
-        placeholder="Confirm your password..." 
-        handleChange={handleChange}
-        />
-        </Form.Group>
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+            type="password" 
+            placeholder="Confirm your password..." 
+            handleChange={handleChange}
+            />
+        </Form.Group>}
+        {/* Fifth Segment */}
+        
         {/* The sign in button and the next button reflect the current state of sign in*/}
         <Button className="m-3" variant="primary" type="submit">
         { isSignup ? 'Sign Up' : 'Sign In' }
