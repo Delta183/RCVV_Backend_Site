@@ -5,9 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-// import { GoogleLogin } from '@react-oauth/google';
 import { signin, signup } from '../../actions/auth';
-import { AUTH } from "../../constants/actionTypes";
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const LoginComponent = () => {
@@ -35,22 +33,6 @@ const LoginComponent = () => {
             dispatch(signin(form, history));
         }
     };
-    
-
-    // const googleSuccess = async (res) => {
-    //     const result = res?.profileObj;
-    //     const token = res?.tokenId;
-
-    //     try {
-    //         dispatch({ type: AUTH, data: { result, token } });
-
-    //         history.push('/');
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
-
-    // const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
