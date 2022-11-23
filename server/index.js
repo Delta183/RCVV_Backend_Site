@@ -5,8 +5,9 @@ import cors from 'cors';
 
 // Be sure to import routers
 import articleRoutes from './routes/articles.js';
-import newsletterRoutes from './routes/newsletters.js'
-import vendorItemsRoutes from './routes/vendorItems.js'
+import newsletterRoutes from './routes/newsletters.js';
+import vendorItemsRoutes from './routes/vendorItems.js';
+import userRoutes from './routes/user.js';
 const app = express();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
@@ -16,6 +17,7 @@ app.use(cors());
 app.use('/articles', articleRoutes);
 app.use('/newsletters', newsletterRoutes);
 app.use('/vendor', vendorItemsRoutes);
+app.use('/user', userRoutes)
 
 // MongoDB Atlas connection
 const CONNECTION_URL = "mongodb+srv://Delta183:Selene1995@cluster1.uwhyejd.mongodb.net/?retryWrites=true&w=majority";

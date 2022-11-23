@@ -1,10 +1,31 @@
 import axios from 'axios';
 
-// This file is connected to src/actions/articles.js
-const url = 'http://localhost:5000/articles';
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
-export const fetchArticles = () => axios.get(url);
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem('profile')) {
+    req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+  }
+  return req;
+});
+
+export const fetchArticles = () => axios.get('/articles');
 // newArticle in this case is simply a parameter
-export const createArticle = (newArticle) => axios.post(url, newArticle);
-export const updateArticle = (id, updatedArticle) => axios.patch(`${url}/${id}`, updatedArticle);
-export const deleteArticle = (id) => axios.delete(`${url}/${id}`);
+export const createArticle = (newArticle) => axios.post('/articles', newArticle);
+export const updateArticle = (id, updatedArticle) => axios.patch(`/articles/${id}`, updatedArticle);
+export const deleteArticle = (id) => axios.delete(`/articles/${id}`);
+
+export const fetchNewsletters = () => axios.get('/newsletters');
+// newArticle in this case is simply a parameter
+export const createNewsletter = (newNewsletter) => axios.post('/newsletters', newNewsletter);
+export const updateNewsletter = (id, updatedNewsletter) => axios.patch(`/newsletters/${id}`, updatedNewsletter);
+export const deleteNewsletter = (id) => axios.delete(`/newsletters/${id}`);
+
+export const fetchItems = () => axios.get('/vendor');
+// newArticle in this case is simply a parameter
+export const createItem = (newVendorItem) => axios.post('/vendor', newVendorItem);
+export const updateItem = (id, updatedVendorItem) => axios.patch(`/vendor/${id}`, updatedVendorItem);
+export const deleteItem = (id) => axios.delete(`/vendor/${id}`);
+
+export const signIn = (formData) => API.post('/user/signin', formData);
+export const signUp = (formData) => API.post('/user/signup', formData);

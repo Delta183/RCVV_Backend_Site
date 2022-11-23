@@ -1,7 +1,7 @@
 import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
 
 // The actions folder is connext to the api folder
-import * as api from '../api/newsletters.js';
+import * as api from '../api/index.js';
 
 export const getNewsletters = () => async (dispatch) => {
   try {
