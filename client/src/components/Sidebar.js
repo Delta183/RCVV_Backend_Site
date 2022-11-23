@@ -89,7 +89,11 @@ const Sidebar = () => {
               <CDBSidebarMenuItem icon="book">Vendor Items</CDBSidebarMenuItem>
             </NavLink>
             {/* I want to do a simple if but unsure of how to do it */}
-            {user?.result ? (<CDBSidebarMenuItem icon="book">Vendor Items</CDBSidebarMenuItem>
+            {user?.result ? (
+              <NavLink onClick={logout}>
+                <CDBSidebarMenuItem icon="user-alt">Log Out</CDBSidebarMenuItem>
+              </NavLink>
+            
             ) : (
               <div></div>
             ) }
