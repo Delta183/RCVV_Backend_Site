@@ -1,3 +1,4 @@
+// Hardcoded variables to more easily use in dispatch functions
 export const CREATE = 'CREATE';
 export const UPDATE = 'UPDATE';
 export const DELETE = 'DELETE';

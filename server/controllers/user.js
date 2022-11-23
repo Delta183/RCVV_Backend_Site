@@ -33,7 +33,6 @@ export const signin = async (req, res) => {
 
 // Sign up takes more information for the sake of creation
 export const signup = async (req, res) => {
-  console.log(req.body);
   const { email, password, confirmPassword, firstName, lastName } = req.body;
 
   try {

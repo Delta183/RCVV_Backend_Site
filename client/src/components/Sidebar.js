@@ -24,6 +24,7 @@ const Sidebar = () => {
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
 
+    // Return to the sign in page
     navigate('/auth');
 
     setUser(null);
@@ -37,7 +38,7 @@ const Sidebar = () => {
 
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
-
+    // Fetch the user from local storage if possible
     setUser(JSON.parse(localStorage.getItem('profile')));
     // eslint-disable-next-line
   }, [location]);
@@ -89,11 +90,11 @@ const Sidebar = () => {
               <CDBSidebarMenuItem icon="book">Vendor Items</CDBSidebarMenuItem>
             </NavLink>
             {/* I want to do a simple if but unsure of how to do it */}
+            {/* This will only appear if a user is signed in */}
             {user?.result ? (
               <NavLink onClick={logout}>
                 <CDBSidebarMenuItem icon="user-alt">Log Out</CDBSidebarMenuItem>
               </NavLink>
-            
             ) : (
               <div></div>
             ) }

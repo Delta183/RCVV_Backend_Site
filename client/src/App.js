@@ -1,9 +1,4 @@
-import React, { useEffect} from "react";
-// Uses hooks, importing a hook. This will alow us to dispatch an action
-import { useDispatch } from 'react-redux';
-import { getArticles } from './actions/articles.js';
-import { getNewsletters } from "./actions/newsletters.js";
-import { getItems } from "./actions/vendorItems.js";
+import React from "react";
 // Router being imported as a means to navigate all the pages
 // Switch is used as it renders a route exclusively whereas Router rerenders the whole page
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
@@ -17,15 +12,6 @@ import LoginComponent from "./components/LoginComponents/LoginComponent.js";
 // This file structure is curious but more current
 const App = () => {
    
-    const dispatch = useDispatch();
-
-    // Add dispatches here presumably
-    useEffect(() => {
-        dispatch(getArticles());
-        dispatch(getNewsletters());
-        dispatch(getItems());
-      }, [dispatch]);
-
     return (
         <div className="page-container">
             <div className="content-wrap">

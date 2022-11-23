@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
 
-// 
+// The pure functions of the database using the relevant parameters.
 export default (articles = [], action) => {
   switch (action.type) {
     case FETCH_ALL:

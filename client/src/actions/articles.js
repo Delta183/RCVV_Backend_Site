@@ -3,6 +3,7 @@ import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
 // The actions folder is connext to the api folder
 import * as api from '../api/index.js';
 
+// CRUD 
 export const getArticles = () => async (dispatch) => {
   try {
     const { data } = await api.fetchArticles();

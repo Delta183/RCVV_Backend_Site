@@ -7,6 +7,7 @@ import { deleteArticle } from "../../../../actions/articles";
 
 const Article = ({ article, setCurrentId }) => {
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     return (
         // The card subheaders may need ids
@@ -20,9 +21,12 @@ const Article = ({ article, setCurrentId }) => {
                 {/* Moment is used to track the time, a library for time */}
                 <Card.Text>{moment(article.createdAt).fromNow()}</Card.Text>
                 {/* By setting the currentId here, the props go back up and trigger the updateFunction */}
-                <Button className="me-2" variant="primary" onClick={() => setCurrentId(article._id)}>Edit</Button>
-                {/* dispatch the action to deleteArticle */}
-                <Button variant="danger" onClick={() => dispatch(deleteArticle(article._id))}>Delete</Button>
+                {user?.result?.name && 
+                    <div>
+                         <Button className="me-2" variant="primary" onClick={() => setCurrentId(article._id)}>Edit</Button>
+                        {/* dispatch the action to deleteArticle */}
+                        <Button variant="danger" onClick={() => dispatch(deleteArticle(article._id))}>Delete</Button>
+                    </div>}
             </Card.Body>
         </Card> 
     );

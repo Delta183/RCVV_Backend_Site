@@ -2,6 +2,7 @@ import React, { useState }  from "react";
 import { useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+// InputGroup used strictly for the embedded button
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,12 +10,12 @@ import { signin, signup } from '../../actions/auth';
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const LoginComponent = () => {
+    // States are useful for a getter and setter
     const [formData, setFormData] = useState(initialState);
     const [isSignup, setIsSignup] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const [showPassword, setShowPassword] = useState(false);
     const handleShowPassword = () => setShowPassword(!showPassword);
 
     // The two modes are sign up and sign in. This will flip them effectively
@@ -26,7 +27,7 @@ const LoginComponent = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData)
+        // Dispatch the relevant function depending on the state of if the user is signed in or not
         if (isSignup) {
             dispatch(signup(formData, navigate));
         } else {

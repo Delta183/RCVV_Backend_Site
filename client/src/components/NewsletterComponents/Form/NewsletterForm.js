@@ -12,6 +12,7 @@ const NewsletterForm = ({ currentId, setCurrentId }) => {
   // Runs a check if the selected newsletter matches ids
   const newsletter = useSelector((state) => (currentId ? state.newsletters.find((p) => p._id === currentId) : null));
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem('profile'));
 
 // Populate values of the form
 useEffect(() => {
@@ -36,6 +37,14 @@ const clear = () => {
   // Be sure to set the attributes as none once more
   setNewsletterData({ title: '', creator: '', content: '', selectedFile: '' });
 };
+
+if (!user?.result?.name) {
+  return (
+    <h3>
+        Please Sign In to create, edit and delete newsletters.
+    </h3>
+  );
+}
 
 // HTML Below
 return (

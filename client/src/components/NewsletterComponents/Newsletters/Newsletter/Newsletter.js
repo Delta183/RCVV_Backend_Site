@@ -7,6 +7,7 @@ import { deleteNewsletter } from "../../../../actions/newsletters.js";
 
 const Newsletter = ({ newsletter, setCurrentId }) => {
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     return (
         // The card subheaders may need ids
@@ -19,10 +20,13 @@ const Newsletter = ({ newsletter, setCurrentId }) => {
                 <Card.Text>{newsletter.content}</Card.Text>
                 {/* Moment is used to track the time, a library for time */}
                 <Card.Text>{moment(newsletter.createdAt).fromNow()}</Card.Text>
-                {/* By setting the currentId here, the props go back up and trigger the updateFunction */}
-                <Button className="me-2" variant="primary" onClick={() => setCurrentId(newsletter._id)}>Edit</Button>
-                {/* dispatch the action to deleteNewsletter */}
-                <Button variant="danger" onClick={() => dispatch(deleteNewsletter(newsletter._id))}>Delete</Button>
+                {user?.result?.name && 
+                    <div>
+                        {/* By setting the currentId here, the props go back up and trigger the updateFunction */}
+                        <Button className="me-2" variant="primary" onClick={() => setCurrentId(newsletter._id)}>Edit</Button>
+                        {/* dispatch the action to deleteNewsletter */}
+                        <Button variant="danger" onClick={() => dispatch(deleteNewsletter(newsletter._id))}>Delete</Button>
+                    </div>}
             </Card.Body>
         </Card> 
     );

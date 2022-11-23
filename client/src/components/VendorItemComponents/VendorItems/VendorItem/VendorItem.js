@@ -6,6 +6,7 @@ import { deleteItem } from "../../../../actions/vendorItems.js";
 
 const VendorItem = ({ vendorItem, setCurrentId }) => {
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     return (
         // The card subheaders may need ids
@@ -18,9 +19,14 @@ const VendorItem = ({ vendorItem, setCurrentId }) => {
                 <Card.Text>{vendorItem.description}</Card.Text>
                 <Card.Text>Amount: {vendorItem.amount}</Card.Text>
                 {/* By setting the currentId here, the props go back up and trigger the updateFunction */}
-                <Button className="me-2" variant="primary" onClick={() => setCurrentId(vendorItem._id)}>Edit</Button>
-                {/* dispatch the action to deleteArticle */}
-                <Button variant="danger" onClick={() => dispatch(deleteItem(vendorItem._id))}>Delete</Button>
+                {user?.result?.name && 
+                    <div>
+                        <Button className="me-2" variant="primary" onClick={() => setCurrentId(vendorItem._id)}>Edit</Button>
+                        {/* dispatch the action to deleteArticle */}
+                        <Button variant="danger" onClick={() => dispatch(deleteItem(vendorItem._id))}>Delete</Button>
+                    </div>
+                    }
+               
             </Card.Body>
         </Card> 
     );

@@ -11,6 +11,7 @@ const VendorItemForm = ({ currentId, setCurrentId }) => {
   // Runs a check if the selected article matches ids
   const item = useSelector((state) => (currentId ? state.vendorItems.find((p) => p._id === currentId) : null));
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem('profile'));
 
 // Populate values of the form
 useEffect(() => {
@@ -37,6 +38,14 @@ const clear = () => {
 };
 
 // HTML Below
+if (!user?.result?.name) {
+  return (
+    <h3>
+        Please Sign In to create, edit and delete vendor items.
+    </h3>
+  );
+}
+
 return (
   <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
     <h2>{currentId ? `Editing "${item.title}"` : 'Creating an Vendor Item'}</h2>

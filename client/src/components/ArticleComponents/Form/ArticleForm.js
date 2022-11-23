@@ -11,6 +11,8 @@ const ArticleForm = ({ currentId, setCurrentId }) => {
   // Runs a check if the selected article matches ids
   const article = useSelector((state) => (currentId ? state.articles.find((p) => p._id === currentId) : null));
   const dispatch = useDispatch();
+  // Fetch the user if one is signed in
+  const user = JSON.parse(localStorage.getItem('profile'));
 
 // Populate values of the form
 useEffect(() => {
@@ -37,6 +39,14 @@ const clear = () => {
 };
 
 // HTML Below
+if (!user?.result?.name) {
+  return (
+    <h3>
+        Please Sign In to create, edit and delete articles.
+    </h3>
+  );
+}
+
 return (
   <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
     <h2>{currentId ? `Editing "${article.title}"` : 'Creating an Article'}</h2>
@@ -87,24 +97,15 @@ return (
       </div>
     </Form.Group>
 
-    {
-    /* Extra text for a helpful instruction.
-      <Form.Text className="text-muted">
-        We'll never share your email with anyone else.
-      </Form.Text> */
-
-    /* Checkbox functionality.
-    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-      <Form.Check type="checkbox" label="Check me out" />
-    </Form.Group> */}
-
     {/* Submit and clear button to end all information */}
-    <Button className="m-3" variant="primary" type="submit">
-      Submit
-    </Button>
-    <Button variant="primary" onClick={clear}>
-      Clear
-    </Button>
+   
+      <Button className="m-3" variant="primary" type="submit">
+        Submit
+      </Button>
+      <Button variant="primary" onClick={clear}>
+        Clear
+      </Button>
+    
   </Form>
   )
 };

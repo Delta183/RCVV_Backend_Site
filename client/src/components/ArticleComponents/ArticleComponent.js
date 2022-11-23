@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// Uses hooks, importing a hook. This will alow us to dispatch an action
 import { useDispatch } from 'react-redux';
 
 import ArticleForm from './Form/ArticleForm.js';
