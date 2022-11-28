@@ -8,11 +8,19 @@ import { deleteArticle } from "../../../../actions/articles";
 const Article = ({ article, setCurrentId }) => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
-
+    // style={{maxHeight:'75%', maxWidth: '75%', overflow: 'hidden'}}
+    // Need to rethink how to deal with these images
+    function onClickFunction(id){
+        // Update current id
+        setCurrentId(id);
+        // Move screen to the top
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    };
     return (
         // The card subheaders may need ids
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={article.selectedFile} /> 
+        <Card >
+            <Card.Img 
+            variant="top" src={article.selectedFile} /> 
             <Card.Body>
                 {/* Using the article passed down via the parameters, use them to populate the card */}
                 <Card.Title>{article.title}</Card.Title>
@@ -23,7 +31,7 @@ const Article = ({ article, setCurrentId }) => {
                 {/* By setting the currentId here, the props go back up and trigger the updateFunction */}
                 {user?.result?.name && 
                     <div>
-                         <Button className="me-2" variant="primary" onClick={() => setCurrentId(article._id)}>Edit</Button>
+                         <Button className="me-2" variant="primary" onClick={() => onClickFunction(article._id)}>Edit</Button>
                         {/* dispatch the action to deleteArticle */}
                         <Button variant="danger" onClick={() => dispatch(deleteArticle(article._id))}>Delete</Button>
                     </div>}

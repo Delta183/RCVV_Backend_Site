@@ -8,6 +8,13 @@ const VendorItem = ({ vendorItem, setCurrentId }) => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
 
+    function onClickFunction(id){
+        // Update current id
+        setCurrentId(id);
+        // Move screen to the top
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    };
+
     return (
         // The card subheaders may need ids
         <Card style={{ width: '18rem' }}>
@@ -21,7 +28,7 @@ const VendorItem = ({ vendorItem, setCurrentId }) => {
                 {/* By setting the currentId here, the props go back up and trigger the updateFunction */}
                 {user?.result?.name && 
                     <div>
-                        <Button className="me-2" variant="primary" onClick={() => setCurrentId(vendorItem._id)}>Edit</Button>
+                        <Button className="me-2" variant="primary" onClick={() => onClickFunction(vendorItem._id)}>Edit</Button>
                         {/* dispatch the action to deleteArticle */}
                         <Button variant="danger" onClick={() => dispatch(deleteItem(vendorItem._id))}>Delete</Button>
                     </div>

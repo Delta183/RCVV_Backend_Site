@@ -67,7 +67,7 @@ const Sidebar = () => {
                   style={{ width: '75px' }}
                 />
               </div>
-              <div className="flex-col ms-2 d-flex align-items-center">Daniel Figueroa</div>
+              <div className="flex-col ms-2 d-flex align-items-center">{user?.result?.name}</div>
             </div>
             </CDBSidebarMenuItem>
             ) : (
@@ -92,7 +92,7 @@ const Sidebar = () => {
             {/* I want to do a simple if but unsure of how to do it */}
             {/* This will only appear if a user is signed in */}
             {user?.result ? (
-              <NavLink onClick={logout}>
+              <NavLink onClick={logout} to="/">
                 <CDBSidebarMenuItem icon="user-alt">Log Out</CDBSidebarMenuItem>
               </NavLink>
             ) : (

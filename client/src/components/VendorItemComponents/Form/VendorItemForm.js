@@ -48,7 +48,7 @@ if (!user?.result?.name) {
 
 return (
   <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-    <h2>{currentId ? `Editing "${item.title}"` : 'Creating an Vendor Item'}</h2>
+    <h2>{currentId ? `Editing "${item.title}"` : 'Creating a Vendor Item'}</h2>
     {/* First segment of the form (i.e. title, text input, extra text
       mb refers to the level of the 'b' bottom margin. me is for the 'e' end margin  */}
     <Form.Group className="m-3" name="title">

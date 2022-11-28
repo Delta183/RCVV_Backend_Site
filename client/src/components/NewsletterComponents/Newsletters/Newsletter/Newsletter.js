@@ -9,6 +9,12 @@ const Newsletter = ({ newsletter, setCurrentId }) => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
 
+    function onClickFunction(id){
+        // Update current id
+        setCurrentId(id);
+        // Move screen to the top
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    };
     return (
         // The card subheaders may need ids
         <Card style={{ width: '18rem' }}>
@@ -23,7 +29,7 @@ const Newsletter = ({ newsletter, setCurrentId }) => {
                 {user?.result?.name && 
                     <div>
                         {/* By setting the currentId here, the props go back up and trigger the updateFunction */}
-                        <Button className="me-2" variant="primary" onClick={() => setCurrentId(newsletter._id)}>Edit</Button>
+                        <Button className="me-2" variant="primary" onClick={() => onClickFunction(newsletter._id)}>Edit</Button>
                         {/* dispatch the action to deleteNewsletter */}
                         <Button variant="danger" onClick={() => dispatch(deleteNewsletter(newsletter._id))}>Delete</Button>
                     </div>}
